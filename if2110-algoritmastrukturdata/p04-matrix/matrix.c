@@ -46,18 +46,17 @@ void readMatrix(Matrix *m, int nRow, int nCol) {
 }
 
 void displayMatrix(Matrix m) {
-   for (int i=0; i<=getLastIdxRow(m); ++i) {
-      if (i > 0) {
-         printf("\n");
-      } else {
-         for (int j=0; j<=getLastIdxCol(m); ++j) {
+    for (int i = 0; i < ROW_EFF(m); ++i) { // Ubah batas loop menjadi < ROW_EFF(m)
+        for (int j = 0; j < COL_EFF(m); ++j) { // Ubah batas loop menjadi < COL_EFF(m)
             if (j > 0) {
-               printf(" ");
+                printf(" "); // Tambahkan spasi sebelum elemen jika bukan elemen pertama
             }
-            printf("%d", ELMT(m, i, j));
-         }
-      }
-   }
+            printf("%d", ELMT(m, i, j)); // Tampilkan elemen
+        }
+        if (i < ROW_EFF(m) - 1) {
+            printf("\n"); // Tambahkan newline hanya jika bukan baris terakhir
+        }
+    }
 }
 
 Matrix addMatrix(Matrix m1, Matrix m2) {
@@ -133,11 +132,11 @@ boolean isMatrixEqual(Matrix m1, Matrix m2) {
 }
 
 boolean isMatrixNotEqual(Matrix m1, Matrix m2) {
-   return !isMatrixEqual;
+   return !isMatrixEqual(m1, m2);
 }
 
 boolean isMatrixSizeEqual(Matrix m1, Matrix m2) {
-   return (ROW_EFF(m1) == ROW_EFF(m2)) || (COL_EFF(m1) == COL_EFF(m2));
+   return (ROW_EFF(m1) == ROW_EFF(m2)) && (COL_EFF(m1) == COL_EFF(m2));
 }
 
 int countElmt(Matrix m) {
