@@ -90,18 +90,17 @@ void readMatrix(Matrix *m, int nRow, int nCol) {
 8 9 10 
 */
 void displayMatrix(Matrix m) {
-   for (int i=0; i<=getLastIdxRow(m); ++i) {
-      if (i > 0) {
-         printf("\n");
-      } else {
-         for (int j=0; j<=getLastIdxCol(m); ++j) {
+    for (int i = 0; i < ROW_EFF(m); ++i) { // Ubah batas loop menjadi < ROW_EFF(m)
+        for (int j = 0; j < COL_EFF(m); ++j) { // Ubah batas loop menjadi < COL_EFF(m)
             if (j > 0) {
-               printf(" ");
+                printf(" "); // Tambahkan spasi sebelum elemen jika bukan elemen pertama
             }
-            printf("%d", ELMT(m, i, j));
-         }
-      }
-   }
+            printf("%d", ELMT(m, i, j)); // Tampilkan elemen
+        }
+        if (i < ROW_EFF(m) - 1) {
+            printf("\n"); // Tambahkan newline hanya jika bukan baris terakhir
+        }
+    }
 }
 /* I.S. m terdefinisi */
 /* F.S. Nilai m(i,j) ditulis ke layar per baris per kolom, masing-masing elemen per baris 
