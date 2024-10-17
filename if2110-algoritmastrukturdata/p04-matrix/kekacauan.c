@@ -1,10 +1,12 @@
 #include "matrix.h"
 #include <stdio.h>
 
+#define MOD 1000000007
+
 int main() {
     Matrix papan;
     int n;
-    int kekacauan = 0;
+    long long kekacauan = 0;
 
     scanf("%d", &n);
     readMatrix(&papan, n, n);
@@ -25,11 +27,12 @@ int main() {
     for (int i=0; i<=getLastIdxRow(papan); ++i) {
         for (int j=0; j<=getLastIdxCol(papan); ++j) {
             if (ELMT(papan, i, j) > 0) {
-                kekacauan += kekacauanRow[i] + kekacauanCol[j] - 2*ELMT(papan, i, j);
+                kekacauan += (kekacauanRow[i] + kekacauanCol[j] - 2*ELMT(papan, i, j));
             }
         }
     }
 
-    printf("%d\n", kekacauan);
+    kekacauan = kekacauan % MOD;
+    printf("%lld\n", kekacauan);
     return 0;
 }
