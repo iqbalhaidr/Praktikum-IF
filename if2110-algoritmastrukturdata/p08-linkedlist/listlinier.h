@@ -6,7 +6,7 @@
 #ifndef listlinier_H
 #define listlinier_H
 
-#include "../boolean.h"
+#include "boolean.h"
 
 /* Definisi Node : */
 typedef int ElType;
