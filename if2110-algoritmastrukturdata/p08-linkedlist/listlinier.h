@@ -6,15 +6,14 @@
 #ifndef listlinier_H
 #define listlinier_H
 
-#include "boolean.h"
+#include "../boolean.h"
 
 /* Definisi Node : */
 typedef int ElType;
 typedef struct node *Address;
-typedef struct node
-{
-  ElType info;
-  Address next;
+typedef struct node {
+    ElType info;
+    Address next;
 } Node;
 
 #define INFO(p) (p)->info
@@ -72,9 +71,11 @@ void insertLast(List *l, ElType val);
 /* bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 void insertAt(List *l, ElType val, int idx);
-/* I.S. l tidak mungkin kosong, idx indeks yang valid dalam l, yaitu 0..length(l) */
+/* I.S. l tidak mungkin kosong, idx indeks yang valid dalam l, yaitu
+ * 0..length(l) */
 /* F.S. Melakukan alokasi sebuah elemen dan */
-/* menyisipkan elemen dalam list pada indeks ke-idx (bukan menimpa elemen di i) */
+/* menyisipkan elemen dalam list pada indeks ke-idx (bukan menimpa elemen di i)
+ */
 /* yang bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
