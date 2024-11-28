@@ -1,0 +1,142 @@
+/*Untuk File .txt*/
+
+/*============================================================================*/
+                                /* Bagian 1 */
+/*============================================================================*/
+/*=================================== 3.a. ===================================*/
+Query:  menikah(aihoshino, Suami).
+
+[TIDAK ADA]
+
+no 
+
+/*=================================== 3.b. ===================================*/
+Query:  nenek(Nenek, eve), menikah(Nenek, Kakek), anak(Kakek, KakekBuyut)
+    , pria(KakekBuyut), menikah(KakekBuyut, NenekBuyut), anak(Kakek, NenekBuyut).
+    
+Kakek = barok
+KakekBuyut = qika
+Nenek = roxy
+NenekBuyut = makio ? a
+
+no
+
+/*=================================== 3.c. ===================================*/
+Query:  anak(francesco, OrangTua), keponakan(OrangTua, PamanOrangTua)
+    , pria(PamanOrangTua).
+
+[TIDAK ADA]
+
+no
+
+/*=================================== 3.d. ===================================*/
+Query:  menikah(Suami, Istri1), pria(Suami), menikah(Suami, Istri2)
+    , Istri1 \== Istri2.
+
+Istri1 = himatsuru
+Istri2 = suma
+Suami = qika ? a
+
+Istri1 = himatsuru
+Istri2 = makio
+Suami = qika
+
+Istri1 = suma
+Istri2 = himatsuru
+Suami = qika
+
+Istri1 = suma
+Istri2 = makio
+Suami = qika
+
+Istri1 = makio
+Istri2 = himatsuru
+Suami = qika
+
+Istri1 = makio
+Istri2 = suma
+Suami = qika
+
+no
+
+/*=================================== 3.e. ===================================*/
+Query:  saudaratiri(shelby, SaudaraTiriTertua), usia(SaudaraTiriTertua, UsiaTertua)
+, \+ (saudaratiri(shelby, SaudaraTiri), usia(SaudaraTiri, Usia), Usia > UsiaTertua).
+
+SaudaraTiriTertua = barok ? a
+
+no
+
+/*=================================== 3.f. ===================================*/
+Query:  anak(Anak, OrangTua), \+ (anak(Anak2, OrangTua), Anak \== Anak2).
+
+Anak = barok
+OrangTua = makio ? a
+
+Anak = suzy
+OrangTua = barok
+
+Anak = suzy
+OrangTua = roxy
+
+Anak = aihoshino
+OrangTua = ruby
+
+Anak = aihoshino
+OrangTua = eriq
+
+Anak = eve
+OrangTua = suzy
+
+Anak = eve
+OrangTua = francesco
+
+yes
+
+/*=================================== 3.g. ===================================*/
+Query:  pria(Pria), mertua(Mertua, Pria), usia(Mertua, UmurMertua), UmurMertua > 99.
+
+Mertua = panji
+Pria = eriq
+UmurMertua = 124 ? a
+
+no
+
+/*=================================== 3.h. ===================================*/
+Query:  yatimpiatu(YatimPiatuTermuda), usia(YatimPiatuTermuda, Usia)
+    , \+ (yatimpiatu(YatimPiatu), usia(YatimPiatu, UsiaYatimPiatu)
+    , UsiaYatimPiatu < Usia).
+
+Usia = 25
+YatimPiatuTermuda = francesco ? a
+
+no
+
+/*=================================== 3.i. ===================================*/
+Query:  usia(Orang, Usia), Usia > 60, menikah(Orang, Pasangan)
+    , saudara(Pasangan, Saudara1), saudara(Pasangan, Saudara2)
+    , Saudara1 \== Saudara2.
+
+Orang = roxy
+Pasangan = barok
+Saudara1 = shelby
+Saudara2 = yennefer
+Usia = 70 ? a
+
+Orang = roxy
+Pasangan = barok
+Saudara1 = yennefer
+Saudara2 = shelby
+Usia = 70
+
+no
+
+/*=================================== 3.j. ===================================*/
+Query:  keturunan(Keturunan, qika), keponakan(Keponakan1, Keturunan)
+    , keponakan(Keponakan2, Keturunan), Keponakan1 \== Keponakan2
+    , \+ (keponakan(Keponakan3, Keturunan), Keponakan3 \== Keponakan1
+    , Keponakan3 \== Keponakan2).
+
+[TIDAK ADA]
+
+no 
