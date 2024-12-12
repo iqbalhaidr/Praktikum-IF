@@ -121,4 +121,74 @@ A
 Note: Anda boleh membuat fungsi tambahan untuk membuat implementasi fungsi ini
 jika diperlukan
 */
+
+boolean isEqual(BinTree p1, BinTree p2);
+/* I.S. p1 dan p2 terdefinisi */
+/* F.S. Mengirimkan true jika struktur dan nilai node pada p1 dan p2 identik,
+ * false jika tidak */
+
+int getMaximumDepth(BinTree p);
+/* I.S. p terdefinisi */
+/* F.S. Mengembalikan kedalaman maksimum pohon biner p */
+/* Kedalaman maksimum adalah panjang lintasan dari akar ke simpul daun terjauh
+ */
+/* Jika pohon kosong, maka kedalaman = 0 */
+
+BinTree createBinSearchTreeFromSortedArray(ElType* arr, ElType start,
+                                           ElType end);
+/* Mengembalikan pohon biner yang seimbang (balanced) dibangun dari array yang
+ * terurut */
+/* arr terdefinisi dan tidak kosong, start dan end adalah indeks awal dan akhir
+ * array */
+/* arr merupakan array berisi ElType yang terurut menaik (ascending) */
+/* dipastikan semua elemen pada array unik */
+/* Pilih elemen tengah dari array (indeks mid = (start + end) / 2) sebagai akar
+ * pohon. */
+/* Pohon yang dihasilkan adalah Binary Search Tree(BST), di mana setiap node
+   kiri lebih kecil dari parent node, dan setiap node kanan lebih besar dari
+   parent node. */
+/* Misalnya, jika array [1, 2, 3, 4, 5], pohon yang dihasilkan adalah:
+    3
+   / \
+  1   4
+   \   \
+    2    5
+*/
+
+int countNodes(BinTree p);
+/* p terdefinisi, p adalah pohon biner yang mungkin kosong */
+/* Mengembalikan jumlah seluruh node dalam pohon biner p */
+/* Contoh:
+   Misalkan pohon biner p adalah sebagai berikut:
+       1
+      / \
+     2   3
+    / \
+   4   5
+
+   Panggilan fungsi: countNodes(p)
+
+   Output: 5
+   Penjelasan: Pohon ini memiliki 5 simpul (1, 2, 3, 4, 5)
+*/
+
+void printPathToElement(BinTree p, ElType target);
+/* I.S. p terdefinisi, target adalah elemen yang dicari dalam pohon biner p.
+ * Dipastikan node pada pohon biner p unik */
+/* F.S. Menampilkan jalur menuju elemen target dalam pohon p dalam format "x ->
+   y -> z" jika elemen ditemukan, atau "-1" jika elemen tidak ditemukan */
+/* Untuk memudahkan implementasi, dipastikan path tidak lebih panjang dari 100
+ * elemen */
+/* Contoh:
+   Jika pohon p adalah:
+       1
+      / \
+     2   3
+    / \
+   4   5
+
+   Panggilan: printPathToElement(p, 5)
+   Output: 1 -> 2 -> 5
+*/
+
 #endif

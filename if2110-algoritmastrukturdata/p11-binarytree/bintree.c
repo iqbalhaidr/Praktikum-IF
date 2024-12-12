@@ -100,3 +100,82 @@ void printTreeV2(BinTree p, int h, int indent) {
 }
 
 void printTree(BinTree p, int h) { printTreeV2(p, h, 0); }
+
+boolean isEqual(BinTree p1, BinTree p2) {
+    if (p1 == NULL && p2 == NULL) {
+        return true;
+    } else if (p1 != NULL && p2 != NULL) {
+        return (ROOT(p1) == ROOT(p2)) && isEqual(LEFT(p1), LEFT(p2)) &&
+               isEqual(RIGHT(p1), RIGHT(p2));
+    } else {
+        return false;
+    }
+}
+
+int getMaximumDepth(BinTree p) {
+    if (p == NULL) {
+        return 0;
+    } else {
+        int leftDepth = getMaximumDepth(LEFT(p));
+        int rightDepth = getMaximumDepth(RIGHT(p));
+        return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+}
+
+BinTree createBinSearchTreeFromSortedArray(ElType* arr, ElType start,
+                                           ElType end) {
+    if (start > end) {
+        return NULL;
+    } else {
+        int mid = (start + end) / 2;
+        Address root = newTreeNode(arr[mid]);
+        if (root != NULL) {
+            LEFT(root) =
+                createBinSearchTreeFromSortedArray(arr, start, mid - 1);
+            RIGHT(root) = createBinSearchTreeFromSortedArray(arr, mid + 1, end);
+        }
+        return root;
+    }
+}
+
+int countNodes(BinTree p) {
+    if (p == NULL) {
+        return 0;
+    } else {
+        return 1 + countNodes(LEFT(p)) + countNodes(RIGHT(p));
+    }
+}
+
+boolean findPath(BinTree p, ElType target, ElType path[], int* pathLen) {
+    if (p == NULL) {
+        return false;
+    }
+    path[*pathLen] = ROOT(p);
+    (*pathLen)++;
+    if (ROOT(p) == target) {
+        return true;
+    }
+    if (findPath(LEFT(p), target, path, pathLen) ||
+        findPath(RIGHT(p), target, path, pathLen)) {
+        return true;
+    }
+    (*pathLen)--;
+    return false;
+}
+
+void printPathToElement(BinTree p, ElType target) {
+    ElType path[100];
+    int pathLen = 0;
+    boolean found = findPath(p, target, path, &pathLen);
+    if (found) {
+        for (int i = 0; i < pathLen; i++) {
+            printf("%d", path[i]);
+            if (i != pathLen - 1) {
+                printf(" -> ");
+            }
+        }
+        printf("\n");
+    } else {
+        printf("-1\n");
+    }
+}
