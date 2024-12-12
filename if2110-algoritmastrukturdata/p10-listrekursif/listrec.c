@@ -143,3 +143,100 @@ void displayList(List l) {
     printf("%d\n", head(l));
     displayList(tail(l));
 }
+
+List insertAt(List l, ElType e, int idx) {
+    if (idx == 0) {
+        return konso(copy(l), e);
+    } else {
+        return konso(insertAt(tail(l), e, idx - 1), head(l));
+    }
+}
+
+List deleteFirst(List l) {
+    if (isEmpty(l)) {
+        return NIL;
+    }
+
+    return copy(tail(l));
+}
+
+List deleteAt(List l, int idx) {
+    if (isEmpty(l)) {
+        return NIL;
+    }
+
+    if (idx == 0) {
+        return deleteFirst(l);
+    } else {
+        return konso(deleteAt(tail(l), idx - 1), head(l));
+    }
+}
+
+List deleteLast(List l) {
+    if (isEmpty(l)) {
+        return NIL;
+    }
+
+    return deleteAt(l, length(l) - 1);
+}
+
+List reverseList(List l) {
+    if (isEmpty(l)) {
+        return NIL;
+    }
+
+    if (isOneElmt(l)) {
+        return l;
+    }
+
+    return konsb(reverseList(tail(l)), head(l));
+}
+
+void splitOddEven(List l, List *l1, List *l2) {
+    *l1 = NIL;
+    *l2 = NIL;
+
+    while (l != NIL) {
+        if (INFO(l) % 2 == 0) {
+            *l1 = konsb(*l1, INFO(l));
+        } else {
+            *l2 = konsb(*l2, INFO(l));
+        }
+        l = NEXT(l);
+    }
+}
+
+void splitOnX(List l, ElType x, List *l1, List *l2) {
+    *l1 = NIL;
+    *l2 = NIL;
+
+    int idx = 0;
+    boolean found = false;
+
+    while (l != NIL) {
+        if (!found && idx < x) {
+            *l1 = konsb(*l1, INFO(l));
+        } else {
+            found = true;
+            *l2 = konsb(*l2, INFO(l));
+        }
+        l = NEXT(l);
+        idx++;
+    }
+}
+
+ElType getMiddle(List l) {
+    if (isEmpty(l)) {
+        return NIL;
+    }
+
+    int middle = length(l) / 2;
+    int idx = 0;
+    Address p = l;
+    while (idx < middle) {
+        idx++;
+        p = NEXT(p);
+    }
+
+    return INFO(p);
+}
