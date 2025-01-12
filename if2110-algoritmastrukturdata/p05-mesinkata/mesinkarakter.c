@@ -1,10 +1,11 @@
-#include <stdio.h>
 #include "mesinkarakter.h"
+
+#include <stdio.h>
 
 char currentChar;
 boolean EOP;
 
-static FILE * pita;
+static FILE* pita;
 static int retval;
 
 void START() {

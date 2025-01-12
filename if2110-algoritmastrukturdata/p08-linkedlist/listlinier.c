@@ -1,6 +1,7 @@
+#include "listlinier.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "listlinier.h"
 
 Address getAddress(List l, int idx) {
     Address p = FIRST(l);
@@ -21,13 +22,9 @@ Address newNode(ElType val) {
     return p;
 }
 
-void CreateList(List *l) {
-    FIRST(*l) = NULL;
-}
+void CreateList(List *l) { FIRST(*l) = NULL; }
 
-boolean isEmpty(List l) {
-    return FIRST(l) == NULL;
-}
+boolean isEmpty(List l) { return FIRST(l) == NULL; }
 
 ElType getElmt(List l, int idx) {
     Address p = FIRST(l);
@@ -53,7 +50,7 @@ int indexOf(List l, ElType val) {
     if (isEmpty(l)) {
         return IDX_UNDEF;
     }
-    
+
     Address p = FIRST(l);
     int idx = IDX_UNDEF;
 
@@ -148,7 +145,7 @@ void deleteLast(List *l, ElType *val) {
         return;
     }
 
-    Address beforeLast = getAddress(*l, length(*l)-2);
+    Address beforeLast = getAddress(*l, length(*l) - 2);
     Address last = NEXT(beforeLast);
     *val = INFO(last);
     NEXT(beforeLast) = NULL;
@@ -161,7 +158,7 @@ void deleteAt(List *l, int idx, ElType *val) {
         return;
     }
 
-    Address beforeIdx = getAddress(*l, idx-1);
+    Address beforeIdx = getAddress(*l, idx - 1);
     Address currentIdx = NEXT(beforeIdx);
     *val = INFO(currentIdx);
     NEXT(beforeIdx) = NEXT(currentIdx);
@@ -201,18 +198,18 @@ int length(List l) {
 List concat(List l1, List l2) {
     List l3;
     CreateList(&l3);
-    
+
     Address p = FIRST(l1);
     while (p != NULL) {
         insertLast(&l3, INFO(p));
         p = NEXT(p);
     }
-    
+
     p = FIRST(l2);
     while (p != NULL) {
         insertLast(&l3, INFO(p));
         p = NEXT(p);
     }
-    
+
     return l3;
 }

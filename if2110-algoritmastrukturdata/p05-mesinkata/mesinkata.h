@@ -6,15 +6,14 @@
 
 #include "boolean.h"
 #include "mesinkarakter.h"
-//#include "mesinkarakter.c"
 
 #define NMax 50
 #define BLANK ' '
 
-typedef struct
-{
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
+typedef struct {
+    char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai
+                           [0..NMax-1] */
+    int Length;
 } Word;
 
 /* State Mesin Word */

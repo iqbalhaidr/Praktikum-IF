@@ -10,8 +10,8 @@
 
 /* *** Definisi TYPE CIRCLE *** */
 typedef struct {
-    POINT CENTER;   /* titik tengah */
-    float R;        /* radius */
+    POINT CENTER; /* titik tengah */
+    float R;      /* radius */
 } CIRCLE;
 
 /* *** Notasi Akses: selektor CIRCLE *** */
@@ -49,7 +49,7 @@ void WriteCIRCLE(CIRCLE C);
 /**
  * I.S. : C sembarang
  * F.S. : Nilai C ditulis dengan format "P(X,Y) r=R", ex: P(1,1) r=5
- * Proses : Penulisan tanpa spasi, enter, atau karakter lain di depan, 
+ * Proses : Penulisan tanpa spasi, enter, atau karakter lain di depan,
  * belakang, atau di antaranya
  */
 
@@ -84,7 +84,7 @@ boolean IsCIRCLESTangents(CIRCLE C1, CIRCLE C2);
  *  1. Bersinggungan dalam
  *  2. Bersinggungan luar
  */
- /*
+/*
  * d = R + r
  * d = |R - r|
  */

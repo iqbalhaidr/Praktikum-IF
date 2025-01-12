@@ -1,6 +1,7 @@
+#include "hapus-duplikat.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "hapus-duplikat.h"
 
 List hapusDuplikat(List l) {
     List lNew;
@@ -8,11 +9,11 @@ List hapusDuplikat(List l) {
     Address p = FIRST(l);
     ElType val;
 
-    if (isEmpty(l)) { //list kosong
+    if (isEmpty(l)) {  // list kosong
         return lNew;
     }
 
-    if (NEXT(p) == NULL) { //list hanya 1 elemen
+    if (NEXT(p) == NULL) {  // list hanya 1 elemen
         insertFirst(&lNew, INFO(p));
         return lNew;
     }
@@ -30,7 +31,7 @@ List hapusDuplikat(List l) {
         }
     }
 
-    if (val != INFO(p)) { //cek elemen terakhir
+    if (val != INFO(p)) {  // cek elemen terakhir
         insertFirst(&lNew, INFO(p));
     }
     return lNew;

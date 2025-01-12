@@ -1,17 +1,12 @@
-#include "listdin.h"
 #include <stdio.h>
 
-boolean isOverlap(int s1, int e1, int s2, int e2) {
-    return (s2 <= e1);
-}
+#include "listdin.h"
 
-int mergeStart(int s1, int s2) {
-    return (s1 < s2) ? s1 : s2;
-}
+boolean isOverlap(int s1, int e1, int s2, int e2) { return (s2 <= e1); }
 
-int mergeStop(int e1, int e2) {
-    return (e1 > e2) ? e1 : e2;
-}
+int mergeStart(int s1, int s2) { return (s1 < s2) ? s1 : s2; }
+
+int mergeStop(int e1, int e2) { return (e1 > e2) ? e1 : e2; }
 
 int main() {
     ListDin intervalay, newInterval, result;
@@ -20,7 +15,7 @@ int main() {
     // Baca intervalay
     CreateListDin(&intervalay, 100000);
     readList(&intervalay);
-    n = NEFF(intervalay); // Jumlah elemen di intervalay
+    n = NEFF(intervalay);  // Jumlah elemen di intervalay
 
     // Baca newInterval
     CreateListDin(&newInterval, 2);
@@ -35,18 +30,21 @@ int main() {
     int i = 0;
 
     // Tambahkan interval sebelum newInterval yang tidak beririsan
-    while (i < n && ELMT(intervalay, i+1) < ELMT(newInterval, 0)) {
-        insertLast(&result, ELMT(intervalay, i));     // Masukkan start
-        insertLast(&result, ELMT(intervalay, i+1));   // Masukkan stop
+    while (i < n && ELMT(intervalay, i + 1) < ELMT(newInterval, 0)) {
+        insertLast(&result, ELMT(intervalay, i));      // Masukkan start
+        insertLast(&result, ELMT(intervalay, i + 1));  // Masukkan stop
         i += 2;
     }
 
     // Gabungkan interval yang beririsan dengan newInterval
     int newStart = ELMT(newInterval, 0);
     int newStop = ELMT(newInterval, 1);
-    while (i < n && isOverlap(newStart, newStop, ELMT(intervalay, i), ELMT(intervalay, i+1))) {
-        newStart = mergeStart(newStart, ELMT(intervalay, i));   // Gabungkan start
-        newStop = mergeStop(newStop, ELMT(intervalay, i+1));    // Gabungkan stop
+    while (i < n && isOverlap(newStart, newStop, ELMT(intervalay, i),
+                              ELMT(intervalay, i + 1))) {
+        newStart =
+            mergeStart(newStart, ELMT(intervalay, i));  // Gabungkan start
+        newStop =
+            mergeStop(newStop, ELMT(intervalay, i + 1));  // Gabungkan stop
         i += 2;
     }
     // Tambahkan newInterval yang telah digabung
@@ -55,8 +53,8 @@ int main() {
 
     // Tambahkan interval setelah newInterval yang tidak beririsan
     while (i < n) {
-        insertLast(&result, ELMT(intervalay, i));     // Masukkan start
-        insertLast(&result, ELMT(intervalay, i+1));   // Masukkan stop
+        insertLast(&result, ELMT(intervalay, i));      // Masukkan start
+        insertLast(&result, ELMT(intervalay, i + 1));  // Masukkan stop
         i += 2;
     }
 

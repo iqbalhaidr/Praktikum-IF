@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "stack.h"
 
 int main() {
@@ -20,13 +21,13 @@ int main() {
             if (IsEmpty(S)) {
                 valid = false;
             } else if ((string[i] == ')' && InfoTop(S) == '(') ||
-                      (string[i] == '}' && InfoTop(S) == '{') ||
-                      (string[i] == ']' && InfoTop(S) == '[')) {
+                       (string[i] == '}' && InfoTop(S) == '{') ||
+                       (string[i] == ']' && InfoTop(S) == '[')) {
                 Pop(&S, &val);
             } else {
                 valid = false;
             }
-        }   
+        }
     }
 
     if (valid && IsEmpty(S)) {

@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "queue.h"
 
 int main() {
@@ -31,18 +32,17 @@ int main() {
                 dequeue(&q, &val);
                 printf("Dequeue %d Berhasil\n", val);
             }
-            
+
         } else if (op == 3) {
             if (isEmpty(q)) {
                 printf("Queue Kosong\n");
             } else {
                 printf("Elemen Awal Queue adalah %d\n", HEAD(q));
             }
-            
+
         } else if (op == 4) {
             int len = length(q);
             printf("Ukuran Queue saat ini adalah %d\n", len);
-
         }
     }
 

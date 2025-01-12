@@ -7,7 +7,7 @@ int fibo(int n, int a, int b) {
     if (n == 2) {
         return b;
     }
-    
+
     int fmin2 = a;
     int fmin1 = b;
     int fnow;

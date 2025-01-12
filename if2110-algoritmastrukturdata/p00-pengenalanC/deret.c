@@ -10,11 +10,11 @@ void print_number(int number, int is_first) {
 
 void deret(int a, int b) {
     int current = a;
-    int first_num = 1; 
+    int first_num = 1;
 
     while (current <= b) {
         print_number(current, first_num);
-        first_num = 0; 
+        first_num = 0;
 
         if (current % 2 == 0) {
             current *= 2;

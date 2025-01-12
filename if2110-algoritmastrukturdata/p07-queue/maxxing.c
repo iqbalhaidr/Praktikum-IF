@@ -1,18 +1,24 @@
 #include <stdio.h>
+
 #include "prioqueue.h"
 
 int main() {
-    int n; scanf("%d", &n);
-    PrioQueue a; CreatePrioQueue(&a);
-    PrioQueue b; CreatePrioQueue(&b);
-    
+    int n;
+    scanf("%d", &n);
+    PrioQueue a;
+    CreatePrioQueue(&a);
+    PrioQueue b;
+    CreatePrioQueue(&b);
+
     for (int i = 0; i < n; i++) {
-        int x; scanf("%d", &x);
+        int x;
+        scanf("%d", &x);
         enqueue(&a, x);
     }
 
     for (int i = 0; i < n; i++) {
-        int x; scanf("%d", &x);
+        int x;
+        scanf("%d", &x);
         enqueue(&b, x);
     }
 

@@ -1,5 +1,5 @@
-#include "point.h"
 #include "complex.h"
+#include "point.h"
 
 /* Catatan: Hasil perkalian float dan int adalah float*/
 

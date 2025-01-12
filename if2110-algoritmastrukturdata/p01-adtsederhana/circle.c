@@ -1,10 +1,9 @@
 #include "circle.h"
-#include <stdio.h>
-#include <math.h>
 
-boolean IsCIRCLEValid(float X, float Y, float R) {
-    return (R > 0);
-}
+#include <math.h>
+#include <stdio.h>
+
+boolean IsCIRCLEValid(float X, float Y, float R) { return (R > 0); }
 
 void CreateCIRCLE(CIRCLE *C, float X, float Y, float R) {
     POINT P;
@@ -25,16 +24,17 @@ void ReadCIRCLE(CIRCLE *C) {
 }
 
 void WriteCIRCLE(CIRCLE C) {
-    printf("P(%.2f,%.2f) r=%.2f", Absis(Center(C)), Ordinat(Center(C)), Radius(C));
+    printf("P(%.2f,%.2f) r=%.2f", Absis(Center(C)), Ordinat(Center(C)),
+           Radius(C));
 }
 
 float Circumference(CIRCLE C) {
-    float K = 2*3.14*Radius(C);
+    float K = 2 * 3.14 * Radius(C);
     return K;
 }
 
 float Area(CIRCLE C) {
-    float A = 3.14*Radius(C)*Radius(C);
+    float A = 3.14 * Radius(C) * Radius(C);
     return A;
 }
 

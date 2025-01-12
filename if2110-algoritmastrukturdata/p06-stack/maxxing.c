@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "stack.h"
+
 #include "boolean.h"
+#include "stack.h"
 
 #define MaxN 10007
 

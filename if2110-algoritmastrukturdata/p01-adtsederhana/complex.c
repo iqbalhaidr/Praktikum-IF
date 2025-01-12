@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include "complex.h"
+
+#include <stdio.h>
+
 #include "boolean.h"
 
-boolean IsCOMPLEXValid(float Re, float Im) {
-    return true;
-}
+boolean IsCOMPLEXValid(float Re, float Im) { return true; }
 
 void CreateComplex(COMPLEX *C, float Re, float Im) {
     Real(*C) = Re;

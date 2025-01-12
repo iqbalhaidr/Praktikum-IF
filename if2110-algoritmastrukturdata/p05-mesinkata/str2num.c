@@ -1,7 +1,8 @@
 #include <stdio.h>
+
 #include "boolean.h"
-#include "mesinkata.h"
 #include "mesinkarakter.h"
+#include "mesinkata.h"
 
 char currentChar;
 boolean EOP;
@@ -59,17 +60,11 @@ boolean sameword(char string1[], Word string2) {
     return true;
 }
 
-boolean isratusan(Word string1) {
-    return sameword("ratus", string1);
-}
+boolean isratusan(Word string1) { return sameword("ratus", string1); }
 
-boolean ispuluhan(Word string1) {
-    return sameword("puluh", string1);
-}
+boolean ispuluhan(Word string1) { return sameword("puluh", string1); }
 
-boolean isbelasan(Word string1) {
-    return sameword("belas", string1);
-}
+boolean isbelasan(Word string1) { return sameword("belas", string1); }
 
 int searchidxinListString(Word string, char arr[][10]) {
     for (int i = 0; i < 13; i++) {
@@ -82,11 +77,9 @@ int searchidxinListString(Word string, char arr[][10]) {
 
 void str2num() {
     char huruf_depanEksklusif[13][10] = {
-        "nol","satu", "dua", "tiga", "empat", "lima", "enam", 
-        "tujuh", "delapan", "sembilan", "sepuluh", 
-        "sebelas", "seratus"
-    };
-    int bilangan[13] = {0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 100};
+        "nol",   "satu",    "dua",      "tiga",    "empat",   "lima",   "enam",
+        "tujuh", "delapan", "sembilan", "sepuluh", "sebelas", "seratus"};
+    int bilangan[13] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 100};
     int angka = 0;
     int *Pangka = &angka;
     char finalsentence[100000] = "";
@@ -109,12 +102,10 @@ void str2num() {
                 concatnumber(finalsentence, num);
                 *Pangka = 0;
                 continue;
-            } 
-            else if (idx == 12) {  // seratus
+            } else if (idx == 12) {  // seratus
                 *Pangka += bilangan[idx];
                 continue;
-            }
-            else if (local==0){
+            } else if (local == 0) {
                 char num[50];
                 sprintf(num, "%d", local);
                 concatnumber(finalsentence, num);
@@ -124,18 +115,15 @@ void str2num() {
             CopyWord();
             if (isratusan(currentWord)) {
                 local *= 100;
-            } 
-            else if (ispuluhan(currentWord)) {
+            } else if (ispuluhan(currentWord)) {
                 local *= 10;
-            } 
-            else if (isbelasan(currentWord)) {
+            } else if (isbelasan(currentWord)) {
                 local += 10;
-            } 
-            else if (local==0){
-                int oneDigit=searchidxinListString(currentWord, huruf_depanEksklusif);
-                local+=oneDigit;
-            }
-            else {
+            } else if (local == 0) {
+                int oneDigit =
+                    searchidxinListString(currentWord, huruf_depanEksklusif);
+                local += oneDigit;
+            } else {
                 if (local > 0) {
                     *Pangka += local;
                     char num[50];

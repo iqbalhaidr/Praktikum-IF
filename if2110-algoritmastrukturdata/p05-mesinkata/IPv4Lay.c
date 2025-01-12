@@ -1,6 +1,7 @@
-#include "mesinkata.h"
-#include "mesinkarakter.h"
 #include <stdio.h>
+
+#include "mesinkarakter.h"
+#include "mesinkata.h"
 
 char currentChar;
 boolean EOP;
@@ -9,22 +10,22 @@ Word currentWord;
 
 boolean isZero(char c) {
     int n = (c);
-    return (n==48);
+    return (n == 48);
 }
 
 boolean isDigit(char c) {
     int n = (int)c;
-    return (n>=48 && n<=57);
+    return (n >= 48 && n <= 57);
 }
 
 int toNumber(char c) {
     int n = (int)c;
-    return (n-48);
-} 
+    return (n - 48);
+}
 
 boolean isSign(char c) {
     int n = (int)c;
-    return (n==64);
+    return (n == 64);
 }
 
 boolean isWordValid(Word curWord) {
@@ -38,24 +39,23 @@ boolean isWordValid(Word curWord) {
 
     int ctr = 0;
     boolean prevSign = false;
-    for (int i=0; i<currentWord.Length; ++i) {
+    for (int i = 0; i < currentWord.Length; ++i) {
         if (isSign(currentWord.TabWord[i]) && !prevSign) {
             ctr += 1;
             prevSign = true;
         } else if (isSign(currentWord.TabWord[i]) && prevSign) {
             return false;
-        } else if (!isSign(currentWord.TabWord[i]) && !isDigit(currentWord.TabWord[i])) {
+        } else if (!isSign(currentWord.TabWord[i]) &&
+                   !isDigit(currentWord.TabWord[i])) {
             return false;
         } else {
             prevSign = false;
         }
     }
-    return (ctr==3);
+    return (ctr == 3);
 }
 
-boolean isOktetValid(int oktet) {
-    return (oktet>=0 && oktet<=255);
-}
+boolean isOktetValid(int oktet) { return (oktet >= 0 && oktet <= 255); }
 
 boolean isIPv4Lay(Word curWord) {
     if ((currentWord.Length > 50) || !isWordValid(currentWord)) {
@@ -65,7 +65,7 @@ boolean isIPv4Lay(Word curWord) {
         int oktet = -1;
         boolean isNew = true;
 
-        for (int i=0; i<currentWord.Length; ++i) {
+        for (int i = 0; i < currentWord.Length; ++i) {
             if (isSign(currentWord.TabWord[i])) {
                 if (!isOktetValid(oktet)) {
                     return false;
@@ -81,13 +81,13 @@ boolean isIPv4Lay(Word curWord) {
                     oktet = toNumber(currentWord.TabWord[i]);
                     isNew = false;
                 } else {
-                    if (isNew && isZero(currentWord.TabWord[i]) && 
-                        (i + 1 < currentWord.Length) && 
+                    if (isNew && isZero(currentWord.TabWord[i]) &&
+                        (i + 1 < currentWord.Length) &&
                         !isSign(currentWord.TabWord[i + 1])) {
                         return false;  // Leading zero check
                     }
                     oktet *= 10;
-                    oktet += toNumber(currentWord.TabWord[i]); // 192@168@@5
+                    oktet += toNumber(currentWord.TabWord[i]);  // 192@168@@5
                 }
             }
         }
@@ -95,7 +95,7 @@ boolean isIPv4Lay(Word curWord) {
             return false;
         }
         ctrOktet += 1;
-        return (ctrOktet==4);
+        return (ctrOktet == 4);
     }
 }
 

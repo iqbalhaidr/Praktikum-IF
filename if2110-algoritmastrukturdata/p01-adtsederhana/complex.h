@@ -1,17 +1,20 @@
 /* File: complex.h */
 /* Tanggal: 20 September 2024 */
 /* Definisi ADT COMPLEX */
-/* Catatan: Gunakan %.2f pada printf serta %f untuk scanf untuk mengeluarkan dan membaca float */
+/* Catatan: Gunakan %.2f pada printf serta %f untuk scanf untuk mengeluarkan dan
+ * membaca float */
 
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-#include <stdbool.h>
 #include <math.h>
+#include <stdbool.h>
+
+#include "boolean.h"
 
 /* *** Definisi TYPE COMPLEX *** */
 typedef struct {
-    float Re; 
+    float Re;
     float Im;
 } COMPLEX;
 
@@ -24,7 +27,7 @@ typedef struct {
 /* ***************************************************************** */
 /* KELOMPOK VALIDASI TERHADAP TYPE                                   */
 /* ***************************************************************** */
-bool IsCOMPLEXValid(float Re, float Im);
+boolean IsCOMPLEXValid(float Re, float Im);
 /* Mengirim true jika Re dan Im valid untuk membentuk COMPLEX */
 /* Dalam konteks kompleks, semua bilangan real adalah valid */
 
@@ -42,7 +45,8 @@ void BacaCOMPLEX(COMPLEX *C);
 
 void TulisCOMPLEX(COMPLEX C);
 /* I.S. : C sembarang */
-/* F.S. : Nilai C ditulis dengan format "a + bi" atau "a - bi" (tanpa spasi) dan diakhiri newline */
+/* F.S. : Nilai C ditulis dengan format "a + bi" atau "a - bi" (tanpa spasi) dan
+ * diakhiri newline */
 /* Proses : Menulis nilai Re dan Im ke layar */
 
 /* ***************************************************************** */
@@ -75,10 +79,10 @@ COMPLEX ConjugateCOMPLEX(COMPLEX C);
 /* Rumus: Conj(C) = Re - i*Im */
 
 /* *** Kelompok Operator Relational *** */
-bool CEQ(COMPLEX C1, COMPLEX C2);
+boolean CEQ(COMPLEX C1, COMPLEX C2);
 /* Mengirimkan true jika C1 = C2 (Re dan Im sama) */
 
-bool CNEQ(COMPLEX C1, COMPLEX C2);
+boolean CNEQ(COMPLEX C1, COMPLEX C2);
 /* Mengirimkan true jika C1 tidak sama dengan C2 */
 
 /* ***************************************************************** */
